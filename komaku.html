@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>鼓膜Online</title>
+</head>
+<BODY bgcolor="#ffffff">
+<SCRIPT language="JavaScript">
+<!--
+// ランダムに画像を表示する
+img = new Array();
+img[0] = "./鼓膜/【先天性真珠腫】中耳腔に白色腫瘤を認める．一部その腫瘤は鼓膜に接している．.jpg";
+img[1] = "./鼓膜/【弛緩部型真珠腫性中耳炎】上鼓室が陥凹している.jpg";
+img[2] = "./鼓膜/【急性中耳炎】鼓膜が発赤し，中耳に膿の貯留を認める．.png";
+img[3] = "./鼓膜/【急性中耳炎】鼓膜全体の発赤がある.jpg";
+img[4] = "./鼓膜/【慢性中耳炎】この所見からは感染がみられず，炎症は落ち着いている状態である．鼓膜の穿孔，菲薄化，石灰化がみられている.jpg";
+img[5] = "./鼓膜/【慢性中耳炎】中心性鼓膜穿孔を認める．.png";
+img[6] = "./鼓膜/【正常鼓膜】.jpg";
+img[7] = "./鼓膜/【正常鼓膜】.png";
+img[8] = "./鼓膜/【滲出性中耳炎】中耳に液体貯留と気泡を認める．.png";
+img[9] = "./鼓膜/【滲出性中耳炎】黄色の滲出液が鼓膜から透見され，液面を形成している.jpg";
+img[10] = "./鼓膜/【真珠腫性中耳炎】鼓膜の弛緩部に角化物の堆積を認め，上鼓室外側壁が破壊されている.png";
+
+n = img.length;
+for(var i = img.length - 1; i > 0; i--){
+    var r = Math.floor(Math.random() * (i + 1));
+    var tmp = img[i];
+    img[i] = img[r];
+    img[r] = tmp;
+}
+x = 0;
+document.write("<img id='image' src='" + img[0] + "' width='auto' height='500px' max-width='80%'/> <br>");
+document.write("<p id='name'style= 'visibility:hidden' >" + img[0] + "</p>");
+document.write("<p id='hm' style='font-size: x-small;'>1/"+ n +"</p>");
+function kakunin(){
+document.getElementById("name").style.visibility = "visible";
+}
+function next(){
+if(x < (n - 1)){
+x = x + 1;
+document.getElementById("name").style.visibility = "hidden";
+document.getElementById("image").src = img[x];
+document.getElementById("name").innerHTML = img[x];
+document.getElementById("hm").innerHTML = (x+1) + "/" + n;
+}else{
+document.getElementById("hm").innerHTML = "終了";
+}
+}
+function back(){
+if(x > 0){
+x = x - 1;
+document.getElementById("name").style.visibility = "hidden";
+document.getElementById("image").src = img[x];
+document.getElementById("name").innerHTML = img[x];
+document.getElementById("hm").innerHTML = (x + 1) + "/" + n;
+}
+}
+//-->
+</SCRIPT>
+<form name="test">
+<input type="button" value="前の画像" onClick="back()">
+<input type="button" value="　　　答えを表示　　　" onClick="kakunin()">
+<input type="button" value="次の画像" onClick="next()">
+</form>
+</BODY>
+</HTML>

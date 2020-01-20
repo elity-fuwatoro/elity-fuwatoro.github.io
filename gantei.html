@@ -34,17 +34,46 @@ img[21] = "./眼底/【裂孔原性網膜剝離】網膜裂孔がもとで網膜
 img[22] = "./眼底/【高血圧性網膜症】高血圧性変化（動脈血管狭細化，血管口径不同，出血，硬性白斑），および動脈硬化性変化（動脈壁反射亢進，動静脈交叉現象）がみられる．.jpg";
 img[23] = "./眼底/【黄斑円孔】硝子体皮質の網膜牽引による，円孔がみられる．.jpg";
 
-n = Math.floor(Math.random()*img.length);
-document.write("<img src='" + img[n] + "' width='auto' height='500px' max-width='80%'/> <br>");
-document.write("<p id='name'style= 'visibility:hidden' >" + img[n] + "</p>");
+n = img.length;
+for(var i = img.length - 1; i > 0; i--){
+    var r = Math.floor(Math.random() * (i + 1));
+    var tmp = img[i];
+    img[i] = img[r];
+    img[r] = tmp;
+}
+x = 0;
+document.write("<img id='image' src='" + img[0] + "' width='auto' height='500px' max-width='80%'/> <br>");
+document.write("<p id='name'style= 'visibility:hidden' >" + img[0] + "</p>");
+document.write("<p id='hm' style='font-size: x-small;'>1/"+ n +"</p>");
 function kakunin(){
 document.getElementById("name").style.visibility = "visible";
+}
+function next(){
+if(x < (n - 1)){
+x = x + 1;
+document.getElementById("name").style.visibility = "hidden";
+document.getElementById("image").src = img[x];
+document.getElementById("name").innerHTML = img[x];
+document.getElementById("hm").innerHTML = (x+1) + "/" + n;
+}else{
+document.getElementById("hm").innerHTML = "終了";
+}
+}
+function back(){
+if(x > 0){
+x = x - 1;
+document.getElementById("name").style.visibility = "hidden";
+document.getElementById("image").src = img[x];
+document.getElementById("name").innerHTML = img[x];
+document.getElementById("hm").innerHTML = (x + 1) + "/" + n;
+}
 }
 //-->
 </SCRIPT>
 <form name="test">
-<input type="button" value="答えを表示" onClick="kakunin()">
-<input type="button" value="別の画像" onClick="location.reload()">
+<input type="button" value="前の画像" onClick="back()">
+<input type="button" value="　　　答えを表示　　　" onClick="kakunin()">
+<input type="button" value="次の画像" onClick="next()">
 </form>
 </BODY>
 </HTML>
