@@ -68,12 +68,26 @@ document.getElementById("name").innerHTML = img[x];
 document.getElementById("hm").innerHTML = (x + 1) + "/" + n;
 }
 }
+function batu(){
+var text = document.getElementById("batulist").innerHTML;
+if(text == ""){
+document.getElementById("batulist").innerHTML = x + 1;
+}else{
+document.getElementById("batulist").innerHTML = text + "," + (x + 1);
+}
+}
+function clearbatu(){
+document.getElementById("batulist").innerHTML = "";
+}
 //-->
 </SCRIPT>
 <form name="test">
 <input type="button" value="前の画像" onClick="back()">
 <input type="button" value="　　　答えを表示　　　" onClick="kakunin()">
 <input type="button" value="次の画像" onClick="next()">
+</form>
+<form name="check">
+<p><input type="button" value="✕として記録" onClick="batu()"> 　<span id="batulist"></span> 　<input type="button" value="←クリア" onClick="clearbatu()"></p>
 </form>
 </BODY>
 </HTML>
