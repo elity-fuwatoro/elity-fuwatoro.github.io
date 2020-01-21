@@ -67,13 +67,19 @@ document.getElementById("name").innerHTML = img[x];
 document.getElementById("hm").innerHTML = (x + 1) + "/" + n;
 }
 }
-
+function jump(num){
+x = num - 1;
+document.getElementById("name").style.visibility = "hidden";
+document.getElementById("image").src = img[num - 1];
+document.getElementById("name").innerHTML = img[num -1];
+document.getElementById("hm").innerHTML = num + "/" + n;
+}
 function batu(){
 var text = document.getElementById("batulist").innerHTML;
 if(text == ""){
-document.getElementById("batulist").innerHTML = x + 1;
+document.getElementById("batulist").innerHTML = "<a href='javascript:jump(" + (x + 1) + ");'>" + (x + 1) + "</a>";
 }else{
-document.getElementById("batulist").innerHTML = text + "," + (x + 1);
+document.getElementById("batulist").innerHTML = text + ",　<a href='javascript:jump(" + (x + 1) + ");'>" + (x + 1) + "</a>";
 }
 }
 function clearbatu(){
